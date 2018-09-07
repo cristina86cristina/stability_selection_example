@@ -108,7 +108,7 @@ if __name__ == '__main__':
     k_subsample = 5  # k in k-fold cross validation - cross-validation to choose parameter for l1 SVM 
     #i = 62 # select 80% of samples ###CHANGE HERE#####
 
-    data_tot = pd.read_csv('input_data.csv') #name of input file
+    data_tot = pd.read_csv('data/input_data.csv') #name of input file
     label = data_tot.Class.values #extract Class to use as label 
     label = np.squeeze(label.reshape(8,1)) #n of sample ###CHANGE HERE#####
     
@@ -118,6 +118,6 @@ if __name__ == '__main__':
     idx_select, idx_coef = run_svm(iter_num, k_subsample, sampled_features, data, alpha_range, k_subsample)
     res_sorted = sort_indices(idx_select, idx_coef)
 
-    res_sorted.to_csv('out.csv',sep=',') #save results as csv - this file is ready for SVM in R ###CHANGE HERE#####
+    res_sorted.to_csv('output/out.csv',sep=',') #save results as csv - this file is ready for SVM in R ###CHANGE HERE#####
 
 
