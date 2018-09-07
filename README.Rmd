@@ -1,0 +1,30 @@
+---
+title: "README"
+author: "Cristina Venturini"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+This repository contains the scripts to run the stability selection. 
+
+Folder scripts/ includes the main script stability_selection_example.py and stability_shuffle_labels.py to run the stability selection with shuffled labels. The scripts need to be modified prior running with your own data. 
+
+##Parameters: 
+- iter_num: number of iterations (in our own datasets we use 10000)
+- sampled_features: number of features (genes) to include in each iteration (we usually do 10% of the total number of genes)
+- k_subsample: k in k-fold cross validation (usually 5)
+- data_tot= name of your input file in csv format (an example of input file can be found in the data/ folder)
+- label = np.squeeze(label.reshape(x,1)) = instead of x, insert the n of samples
+- data = data_tot.loc[:,'A2M':].values = instead of A2M, insert the first gene/feature in your dataset
+
+Run from the command line: (tested in Python 2.7)
+```{bash}
+python scripts/stability_selection_example.py 
+```
+
+##Data input: 
+Example of a data file can be found in data/. Input file must be a .csv file with samples as rows and gene/features as columns. First column is sampleid "Patient" and second column the label for classification "Class"
+
